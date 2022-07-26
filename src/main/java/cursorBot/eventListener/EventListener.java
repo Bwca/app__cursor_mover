@@ -38,7 +38,7 @@ public class EventListener {
 
     private void switchOffAnnoyingDebugMessages() {
         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
-        logger.setLevel(Level.WARNING);
+        logger.setLevel(Level.OFF);
         logger.setUseParentHandlers(false);
     }
 }

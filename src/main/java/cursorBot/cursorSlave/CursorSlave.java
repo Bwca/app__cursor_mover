@@ -15,8 +15,8 @@ public class CursorSlave {
 
         byte step = 100;
         int x = mouseX + step * direction;
-        robot.mouseMove(x, mouseY);
         changeStepDirection();
+        robot.mouseMove(x, mouseY);
     }
 
     private void changeStepDirection() {

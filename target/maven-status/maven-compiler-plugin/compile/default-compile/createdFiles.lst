@@ -1,1 +1,7 @@
+cursorbot\eventListener\inputListeners\BaseEventEmitter.class
+cursorbot\eventListener\inputListeners\MouseListener.class
+cursorbot\eventListener\Irrelevant.class
+cursorbot\cursorSlave\CursorSlave.class
+cursorbot\eventListener\inputListeners\KeyListener.class
 cursorbot\App.class
+cursorbot\eventListener\EventListener.class
