@@ -1,8 +1,10 @@
 package cursorbot;
 
-import java.awt.Robot;
-import java.awt.AWTException;
-import java.awt.MouseInfo;
+import cursorbot.cursorSlave.CursorSlave;
+import cursorbot.eventListener.EventListener;
+
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -10,27 +12,14 @@ import java.awt.MouseInfo;
  */
 public class App {
 
-    public static void main(String... args) {
-        moveMouse();
-    }
+    private static final long debounceTime = 2000;
 
-    private static void moveMouse() {
-        try {
-            final Robot robot = new Robot();
-            int mouseX = (int) MouseInfo.getPointerInfo().getLocation().getX();
-            final int mouseY = (int) MouseInfo.getPointerInfo().getLocation().getY();
-            final byte step = 100;
-            byte multiplier = 1;
-            final short sleepTime = 15000;
+    public static void main(String... args) throws AWTException {
+        final CursorSlave cursorSlave = new CursorSlave();
 
-            while (true) {
-                int x = mouseX + step * multiplier;
-                multiplier *= -1;
-                robot.mouseMove(x, mouseY);
-                Thread.sleep(sleepTime);
-            }
-        } catch (AWTException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        new EventListener()
+                .startListeningToEvents()
+                .debounce(debounceTime, TimeUnit.MILLISECONDS)
+                .subscribe(v -> cursorSlave.moveTheCursorLikeTheresSomeoneAround());
     }
 }
