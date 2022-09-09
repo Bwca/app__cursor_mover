@@ -21,8 +21,6 @@ public class App {
         new EventListener()
                 .startListeningToEvents()
                 .debounce(debounceTime, TimeUnit.MINUTES)
-                .subscribe(v -> cursorSlave.moveTheCursorLikeTheresSomeoneAround(), e -> {
-                    System.out.println(e);
-                });
+                .subscribe(v -> cursorSlave.moveTheCursorLikeTheresSomeoneAround());
     }
 }
